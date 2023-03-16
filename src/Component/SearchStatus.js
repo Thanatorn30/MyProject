@@ -1,4 +1,4 @@
-function SearchStatus(){
+function SearchStatus(props){
     return(
         <div className="btn-group">
         <input
@@ -7,6 +7,7 @@ function SearchStatus(){
           name="status"
           id="all"
           defaultChecked
+          onClick={()=>{props.search('')}}
         />
         <label className="btn btn-outline-secondary" htmlFor="all">
           <i className="fa-solid fa-list-ul" />
@@ -17,6 +18,8 @@ function SearchStatus(){
           name="status"
           value="completed"
           id="completed"
+          onClick={()=>{props.search(true)}}
+          
         />
         <label className="btn btn-outline-secondary" htmlFor="completed">
           <i className="fa-solid fa-clipboard-check" />
@@ -27,6 +30,7 @@ function SearchStatus(){
           name="status"
           value="pending"
           id="pending"
+          onClick={()=>{props.search(false)}}
         />
         <label className="btn btn-outline-secondary" htmlFor="pending">
           <i className="fa-regular fa-clipboard" />
