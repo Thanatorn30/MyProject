@@ -28,12 +28,12 @@ function TodoItem(props) {
     }
   };
 
-  function openForm(){
+  function openForm() {
     setIsEditing(true);
   }
 
-  function closeForm(data){
-    return setIsEditing(data)
+  function closeForm(data) {
+    return setIsEditing(data);
   }
 
   return (
@@ -43,43 +43,50 @@ function TodoItem(props) {
           props.completed ? "success" : "warning"
         }`}
       >
-        {isEditing?<TodoForm closeForm={closeForm} isEditing={isEditing} title={props.title} todo={props.todo} completed={props.completed} fetchData={props.fetchData}/>:
-        <div 
-            className="d-flex align-items-center">
-          <span 
-            className="flex-fill" 
-            role="button" 
-            onClick={()=>{
+        {isEditing ? (
+          <TodoForm
+            closeForm={closeForm}
+            isEditing={isEditing}
+            title={props.title}
+            todo={props.todo}
+            completed={props.completed}
+            fetchData={props.fetchData}
+          />
+        ) : (
+          <div className="d-flex align-items-center">
+            <span
+              className="flex-fill"
+              role="button"
+              onClick={() => {
                 openForm();
-            }} 
-            >
-            {props.title}
-          </span>
-          <div className="btn-group">
-            <button
-              className="btn btn-outline-secondary"
-              onClick={() => {
-                changeStatus();
               }}
             >
-              <i
-                className={`fa-solid fa-toggle-${
-                  props.completed ? "on" : "off"
-                }`}
-              />
-            </button>
-            <button
-              className="btn btn-outline-secondary"
-              onClick={() => {
-                deleteitem();
-              }}
-            >
-              <i className="fa-regular fa-trash-can" />
-            </button>
+              {props.title}
+            </span>
+            <div className="btn-group">
+              <button
+                className="btn btn-outline-secondary"
+                onClick={() => {
+                  changeStatus();
+                }}
+              >
+                <i
+                  className={`fa-solid fa-toggle-${
+                    props.completed ? "on" : "off"
+                  }`}
+                />
+              </button>
+              <button
+                className="btn btn-outline-secondary"
+                onClick={() => {
+                  deleteitem();
+                }}
+              >
+                <i className="fa-regular fa-trash-can" />
+              </button>
+            </div>
           </div>
-        </div>
-        
-        }
+        )}
       </li>
     </>
   );
